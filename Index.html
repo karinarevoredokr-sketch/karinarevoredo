@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karina Revoredo — UX Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #131011;
+    --surface: #1c1a1a;
+    --surface-featured: #1c1a1a;
+    --border: #4b4446;
+    --border-strong: #6f6568;
+    --border-accent: #82194e;
+    --text-primary: #ffffff;
+    --text-body: #dbd8d9;
+    --text-secondary: #b6b0b2;
+    --text-muted: #8a8385;
+    --pink: #F14B9A;
+    --pink-soft: #f594ba;
+    --green: #4BF1A2;
+    --font-sans: 'Inter', -apple-system, sans-serif;
+    --font-editorial: 'Newsreader', Georgia, serif;
+    --radius: 10px;
+    --radius-lg: 12px;
+  }
+
+  html { scroll-behavior: smooth; }
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text-body);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  img, svg { max-width: 100%; }
+  a { color: inherit; }
+
+  .skip-link {
+    position: absolute; left: -999px; top: 0;
+    background: var(--pink); color: #270314;
+    padding: 10px 16px; z-index: 100; border-radius: 0 0 8px 0;
+  }
+  .skip-link:focus { left: 0; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 3px;
+  }
+
+  :root { --wrap-max: 760px; --wrap-pad: 28px; }
+  .wrap { max-width: var(--wrap-max); margin: 0 auto; padding: 0 var(--wrap-pad); position: relative; }
+
+  @media (min-width: 900px) { :root { --wrap-max: 980px; --wrap-pad: 40px; } }
+  @media (min-width: 1280px) { :root { --wrap-max: 1180px; --wrap-pad: 48px; } }
+
+  .bleed { width: 100vw; position: relative; left: 50%; transform: translateX(-50%); }
+  .bleed-grid { display: grid; grid-template-columns: 1fr; }
+  .bleed-text { padding: 36px var(--wrap-pad) 32px; }
+  .bleed-visual {
+    min-height: 240px;
+    padding: 28px var(--wrap-pad) 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (min-width: 700px) {
+    .bleed-grid { grid-template-columns: 1fr 1fr; align-items: stretch; }
+    .bleed-text {
+      padding: 56px 56px 56px calc((100vw - var(--wrap-max)) / 2 + var(--wrap-pad));
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .bleed-visual {
+      padding: 32px calc((100vw - var(--wrap-max)) / 2 + var(--wrap-pad)) 32px 0;
+      min-height: 0;
+    }
+    .bleed-reverse .bleed-text {
+      order: 2;
+      padding: 56px calc((100vw - var(--wrap-max)) / 2 + var(--wrap-pad)) 56px 56px;
+    }
+    .bleed-reverse .bleed-visual {
+      order: 1;
+      padding: 32px 0 32px calc((100vw - var(--wrap-max)) / 2 + var(--wrap-pad));
+    }
+    .bleed-reverse .bleed-visual { border-left: none; border-right: 1px solid var(--border-accent); }
+  }
+
+  /* imagens reais de tela: sempre inteiras, sem corte nem esticamento */
+  .bleed-visual img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 460px;
+    object-fit: contain;
+    display: block;
+    border-radius: 14px;
+  }
+
+  .bleed-text-only { padding: 44px var(--wrap-pad) 48px; }
+
+  .glico-card {
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+  }
+
+  .glico-card h2 {
+    font-family: var(--font-editorial); font-weight: 400;
+    font-size: clamp(22px, 3vw, 28px); color: var(--text-primary); margin: 12px 0 14px;
+  }
+  .glico-card p { font-size: 14px; color: var(--text-secondary); margin: 0 0 22px; }
+  .glico-card .tag {
+    display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 0.6px;
+    text-transform: uppercase; color: var(--pink-soft);
+  }
+
+  .glico-facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 0;
+  }
+  .glico-facts .fact {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+  }
+  .glico-facts .fact .label {
+    font-size: 10px; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px;
+  }
+  .glico-facts .fact .value {
+    font-size: 13px; color: var(--text-body); line-height: 1.45;
+  }
+
+  @media (max-width: 640px) {
+    .glico-facts { grid-template-columns: 1fr; }
+    .glico-card { padding: 24px; }
+  }
+
+  .status-pill {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-muted);
+    border: 1px solid var(--border-strong); border-radius: 20px; padding: 4px 10px; margin-top: 4px;
+  }
+  .status-pill .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); }
+
+  .texture {
+    position: fixed; inset: 0; z-index: -1; opacity: 0.35; pointer-events: none;
+    background-image: radial-gradient(var(--border) 1px, transparent 1.4px);
+    background-size: 18px 18px;
+  }
+
+  header {
+    display: flex; justify-content: space-between; align-items: center; padding: 36px 0 60px;
+  }
+  .logo { font-size: 14px; font-weight: 500; letter-spacing: 0.6px; text-transform: uppercase; color: var(--text-primary); }
+  nav ul { list-style: none; display: flex; gap: 26px; margin: 0; padding: 0; font-size: 12px; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-secondary); }
+  nav a { text-decoration: none; }
+  nav a:hover { color: var(--text-primary); }
+
+  .eyebrow { display: flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--text-muted); font-weight: 500; margin-bottom: 12px; }
+  .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--pink); }
+
+  .hero { position: relative; padding-bottom: 56px; }
+  .hero-mark { position: absolute; top: 6px; right: 0; }
+
+  h1 {
+    font-family: var(--font-editorial); font-style: italic; font-weight: 400;
+    font-size: clamp(28px, 5vw, 40px); color: var(--text-primary); line-height: 1.28; margin: 0 0 18px; max-width: 15ch;
+  }
+  .hero p { font-size: 15px; color: var(--text-body); max-width: 52ch; margin: 0 0 26px; }
+
+  .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { font-size: 12px; font-weight: 500; letter-spacing: 0.4px; text-transform: uppercase; padding: 11px 22px; border-radius: 8px; text-decoration: none; display: inline-block; }
+  .btn-primary { background: var(--pink); color: #270314; border: none; transition: background 0.2s ease, transform 0.2s ease; }
+  .btn-primary:hover { background: var(--pink-soft); transform: translateY(-2px); }
+  .btn-secondary { background: transparent; color: var(--text-body); border: 1px solid var(--border-strong); transition: border-color 0.2s ease, transform 0.2s ease; }
+  .btn-secondary:hover { border-color: var(--text-secondary); transform: translateY(-2px); }
+
+  .section-label { display: flex; align-items: center; gap: 10px; margin: 64px 0 18px; }
+  .section-label .index { font-size: 11px; color: var(--pink); font-variant-numeric: tabular-nums; }
+  .section-label .rule { flex: 1; height: 1px; background: var(--border); }
+  .section-label .name { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); }
+
+  .case-block { border-top: 1px solid var(--border-accent); border-bottom: 1px solid var(--border-accent); margin-top: -1px; }
+  .case-tint-a { background: var(--surface-featured); }
+  .case-tint-b { background: #17151a; }
+
+  .featured-case { text-decoration: none; display: block; transition: background 0.2s ease; }
+  .featured-case:hover { background: rgba(255, 255, 255, 0.03); }
+  .featured-case .tag { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 0.6px; text-transform: uppercase; color: var(--pink-soft); }
+  .featured-case h2 { font-family: var(--font-editorial); font-weight: 400; font-size: clamp(22px, 3vw, 30px); color: var(--text-primary); margin: 12px 0 10px; }
+  .featured-case p { font-size: 14px; color: var(--text-secondary); max-width: 42ch; margin: 0 0 16px; }
+
+  .visual-mark { width: 100%; max-width: 140px; opacity: 0.9; }
+
+  @media (min-width: 700px) {
+    .bleed-visual {
+      background: radial-gradient(circle at 30% 30%, rgba(241, 75, 154, 0.16), transparent 60%), var(--bg);
+      border-left: 1px solid var(--border-accent);
+    }
+    .bleed-reverse .bleed-visual { border-left: none; }
+  }
+
+  .about-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-strong); margin-bottom: 20px; flex-shrink: 0; }
+  .about-text p { max-width: 60ch; margin: 0 0 14px; }
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .link-arrow { font-size: 12px; font-weight: 500; letter-spacing: 0.4px; text-transform: uppercase; color: var(--pink); text-decoration: none; }
+  .link-arrow:hover { color: var(--pink-soft); }
+
+  footer {
+    margin-top: 70px; padding: 28px 0 44px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--text-muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  }
+  footer a { text-decoration: none; color: var(--text-secondary); }
+  footer a:hover { color: var(--text-primary); }
+
+  @media (max-width: 520px) {
+    header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    nav ul { gap: 16px; flex-wrap: wrap; }
+    .hero-mark { display: none; }
+  }
+
+  @media (min-width: 900px) {
+    .hero-mark { width: 84px; height: 84px; top: 0; }
+    h1 { max-width: 17ch; }
+    .about-content { display: flex; align-items: flex-start; gap: 40px; }
+    .about-photo { margin-bottom: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+<div class="texture" aria-hidden="true"></div>
+
+<div class="wrap">
+  <header>
+    <span class="logo">Karina Revoredo</span>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="#pesquisa">Pesquisa</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+<main id="conteudo">
+
+  <div class="wrap">
+    <section class="hero" aria-label="Introdução">
+      <svg class="hero-mark" width="54" height="54" viewBox="0 0 100 100" aria-hidden="true">
+        <g fill="#F14B9A">
+          <ellipse cx="50" cy="18" rx="8" ry="18"></ellipse>
+          <ellipse cx="50" cy="82" rx="8" ry="18"></ellipse>
+          <ellipse cx="18" cy="50" rx="18" ry="8"></ellipse>
+          <ellipse cx="82" cy="50" rx="18" ry="8"></ellipse>
+          <ellipse cx="27" cy="27" rx="8" ry="17" transform="rotate(45 27 27)"></ellipse>
+          <ellipse cx="73" cy="73" rx="8" ry="17" transform="rotate(45 73 73)"></ellipse>
+          <ellipse cx="73" cy="27" rx="8" ry="17" transform="rotate(-45 73 27)"></ellipse>
+          <ellipse cx="27" cy="73" rx="8" ry="17" transform="rotate(-45 27 73)"></ellipse>
+        </g>
+      </svg>
+
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span> UX researcher · product UX</p>
+      <h1>Eu escuto pessoas pra que produtos façam sentido pra elas</h1>
+      <p>Antropóloga de formação, hoje traduzo comportamento humano em decisões de produto. Pesquisa como ponto de partida, nunca como formalidade.</p>
+      <div class="btn-row">
+        <a href="#projetos" class="btn btn-primary">Ver estudos de caso</a>
+        <a href="#sobre" class="btn btn-secondary">Sobre mim</a>
+      </div>
+    </section>
+  </div>
+
+  <section id="pesquisa" aria-label="Projetos">
+    <div class="wrap">
+      <div class="section-label">
+        <span class="index">01</span>
+        <span class="rule"></span>
+        <span class="name">Projetos</span>
+      </div>
+    </div>
+
+    <!-- CUTIScan: sem print público disponível, mantém a marca gráfica -->
+    <div class="bleed case-block case-tint-a" id="projetos">
+      <a href="https://hospitais.proadi-sus.org.br/projeto/hiae/uso-de-inteligencia-artificial-como-ferramenta-de-apoio-ao-diagnostico-de-doencas" target="_blank" rel="noopener" class="bleed-grid featured-case">
+        <div class="bleed-text">
+          <span class="tag">Entrevistas + card sorting</span>
+          <h2>CUTIScan</h2>
+          <p>Como a pesquisa com a equipe clínica redesenhou o fluxo de triagem e reduziu retrabalho na entrada de dados. Projeto ainda não lançado publicamente pelo hospital.</p>
+          <span class="link-arrow">Ver página do projeto →</span>
+        </div>
+        <div class="bleed-visual">
+          <svg class="visual-mark" viewBox="0 0 100 100" aria-hidden="true">
+            <g fill="#F14B9A">
+              <ellipse cx="50" cy="18" rx="8" ry="18"></ellipse>
+              <ellipse cx="50" cy="82" rx="8" ry="18"></ellipse>
+              <ellipse cx="18" cy="50" rx="18" ry="8"></ellipse>
+              <ellipse cx="82" cy="50" rx="18" ry="8"></ellipse>
+              <ellipse cx="27" cy="27" rx="8" ry="17" transform="rotate(45 27 27)"></ellipse>
+              <ellipse cx="73" cy="73" rx="8" ry="17" transform="rotate(45 73 73)"></ellipse>
+              <ellipse cx="73" cy="27" rx="8" ry="17" transform="rotate(-45 73 27)"></ellipse>
+              <ellipse cx="27" cy="73" rx="8" ry="17" transform="rotate(-45 27 73)"></ellipse>
+            </g>
+          </svg>
+        </div>
+      </a>
+    </div>
+
+    <!-- Adotô: sem imagem pública, mantém a marca gráfica -->
+    <div class="bleed case-block case-tint-b">
+      <a href="case-study-adocao-pets.html" class="bleed-grid bleed-reverse featured-case">
+        <div class="bleed-visual">
+<svg class="visual-mark" viewBox="0 0 100 100" aria-hidden="true">
+  <g fill="#F14B9A">
+    <ellipse cx="50" cy="18" rx="8" ry="18"></ellipse>
+    <ellipse cx="50" cy="82" rx="8" ry="18"></ellipse>
+    <ellipse cx="18" cy="50" rx="18" ry="8"></ellipse>
+    <ellipse cx="82" cy="50" rx="18" ry="8"></ellipse>
+    <ellipse cx="27" cy="27" rx="8" ry="17" transform="rotate(45 27 27)"></ellipse>
+    <ellipse cx="73" cy="73" rx="8" ry="17" transform="rotate(45 73 73)"></ellipse>
+    <ellipse cx="73" cy="27" rx="8" ry="17" transform="rotate(-45 73 27)"></ellipse>
+    <ellipse cx="27" cy="73" rx="8" ry="17" transform="rotate(-45 27 73)"></ellipse>
+  </g>
+</svg>
+        </div>
+        <div class="bleed-text">
+          <span class="tag">Teste de usabilidade</span>
+          <h2>Adotô</h2>
+          <p>Produto acadêmico sobre adoção de pets, com impacto social como foco central do projeto.</p>
+          <span class="link-arrow">Ver estudo →</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Finanças mães solo: print real da jornada de telas -->
+    <div class="bleed case-block case-tint-a">
+      <a href="case-study-financas-maes-solo.html" class="bleed-grid featured-case">
+        <div class="bleed-text">
+          <span class="tag">Discovery autoral</span>
+          <h2>Finanças de mães solo</h2>
+          <p>Pesquisa com público próprio para mapear metas, hábitos e conquistas financeiras dessa jornada.</p>
+          <span class="link-arrow">Ver estudo →</span>
+        </div>
+        <div class="bleed-visual">
+<svg class="visual-mark" viewBox="0 0 100 100" aria-hidden="true">
+  <g fill="#F14B9A">
+    <ellipse cx="50" cy="18" rx="8" ry="18"></ellipse>
+    <ellipse cx="50" cy="82" rx="8" ry="18"></ellipse>
+    <ellipse cx="18" cy="50" rx="18" ry="8"></ellipse>
+    <ellipse cx="82" cy="50" rx="18" ry="8"></ellipse>
+    <ellipse cx="27" cy="27" rx="8" ry="17" transform="rotate(45 27 27)"></ellipse>
+    <ellipse cx="73" cy="73" rx="8" ry="17" transform="rotate(45 73 73)"></ellipse>
+    <ellipse cx="73" cy="27" rx="8" ry="17" transform="rotate(-45 73 27)"></ellipse>
+    <ellipse cx="27" cy="73" rx="8" ry="17" transform="rotate(-45 27 73)"></ellipse>
+  </g>
+</svg>
+        </div>
+      </a>
+    </div>
+
+    <!-- Glicogenose: em andamento, sem visual ainda -->
+    <div class="bleed case-block case-tint-b">
+      <div class="glico-card">
+        <span class="tag">Pesquisa documental + entrevistas</span>
+        <h2>App glicogenose</h2>
+        <div class="glico-facts">
+          <div class="fact">
+            <div class="label">O problema</div>
+            <div class="value">Doença rara sem protocolo clínico nacional único — famílias e serviços de saúde improvisam a rotina de cuidado.</div>
+          </div>
+          <div class="fact">
+            <div class="label">Método</div>
+            <div class="value">Levantamento documental + entrevistas de campo com famílias e especialistas.</div>
+          </div>
+          <div class="fact">
+            <div class="label">Status</div>
+            <div class="value">Mapeamento da jornada em andamento, orientando as próximas decisões de design.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section id="sobre" aria-label="Sobre">
+      <div class="section-label">
+        <span class="index">02</span>
+        <span class="rule"></span>
+        <span class="name">Sobre</span>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p>Antropóloga de formação, hoje UX researcher. Trabalho na ponte entre comportamento humano e decisões de produto, principalmente em contextos de saúde.</p>
+          <p>Fiz graduação em Antropologia e, mais recentemente, pós-graduação em UX Design pela PUC. Hoje atuo com pesquisa e jornada de usuário em projetos de saúde, e também faço trabalhos autorais de discovery e pesquisa fora do meu emprego principal.</p>
+          <p>Fora do trabalho, gosto de conversar sobre o que faz as pessoas realmente decidirem as coisas, e é basicamente esse fio que puxo em toda pesquisa que faço.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<div class="wrap">
+  <footer id="contato">
+    <span>© 2026 Karina Revoredo</span>
+    <div style="display:flex; gap:20px;">
+      <a href="mailto:karinarevoredo.kr@gmail.com">karinarevoredo.kr@gmail.com</a>
+      <a href="https://www.linkedin.com/in/karina-revoredo/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
