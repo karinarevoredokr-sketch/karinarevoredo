@@ -1,0 +1,57 @@
+/* Tema do Adotô: usa as cores do próprio app (creme, marrom e caramelo) sobre a estrutura do portfólio */
+:root { --cream: #f4f3f2; --brown: #603427; --caramel: #b5783d; --caramel-soft: #e0b98c; --pink: #b5783d; --pink-soft: #e0b98c; --border-accent: #b5783d; }
+
+.hero-band { background: var(--cream); color: var(--brown); position: relative; overflow: hidden; padding-bottom: 72px; border-radius: 0 0 36px 36px; }
+.hero-band .paws { position: absolute; inset: 0; pointer-events: none; opacity: .5; }
+.hero-band .wrap { position: relative; }
+.hero-band .logo, .hero-band .back { color: var(--brown); }
+.hero-band .back:hover { color: var(--caramel); }
+.hero-band .eyebrow { color: var(--caramel); }
+.hero-band .eyebrow svg { width: 16px; height: 16px; }
+.hero-band h1 { color: var(--brown); font-style: normal; font-weight: 400; font-size: clamp(44px, 8vw, 88px); letter-spacing: -1px; }
+.hero-band .lead { color: #4b2a1f; }
+.hero-band .meta { border-color: rgba(96, 52, 39, .25); margin-bottom: 40px; }
+.hero-band .meta dt { color: #8a6a5e; }
+.hero-band .meta dd { color: var(--brown); font-weight: 500; }
+.hero-band .cover { background: transparent; border: 0; border-radius: 0; }
+.hero-band .cover.phones { padding: 0; }
+.hero-band .cover.phones img { max-width: 100%; border-radius: 24px; box-shadow: 0 24px 60px rgba(96, 52, 39, .18); }
+.hero-band .fill { color: var(--brown); border-color: var(--caramel); }
+
+.eyebrow .dot { background: var(--caramel); }
+.section-label .index { color: var(--caramel); }
+
+/* Frase de destaque */
+.statement { background: var(--caramel); color: #2b140c; border-radius: 28px; padding: clamp(32px, 6vw, 64px); margin: 72px 0 0; }
+.statement p { font-family: var(--font-editorial); font-size: clamp(24px, 3.6vw, 40px); line-height: 1.25; margin: 0; max-width: 24ch; }
+.statement small { display: block; margin-top: 18px; font-size: 12px; letter-spacing: .8px; text-transform: uppercase; opacity: .75; }
+
+/* Cards com identidade */
+.card { border-radius: 20px; }
+.card .ico { width: 40px; height: 40px; border-radius: 12px; background: rgba(181, 120, 61, .16); display: grid; place-items: center; margin-bottom: 14px; }
+.card .ico svg { width: 22px; height: 22px; }
+.card:hover { border-color: var(--caramel); }
+.steps li { border-radius: 20px; }
+.steps li::before { color: var(--caramel); }
+.slot { border-color: var(--caramel); color: var(--caramel-soft); background: rgba(181, 120, 61, .06); border-radius: 20px; }
+.shot img { border-radius: 20px; }
+.fill { border-color: var(--caramel); color: var(--caramel-soft); }
+.next { border-radius: 20px; }
+.next:hover { border-color: var(--caramel); }
+.next .arrow { color: var(--caramel); }
+a:focus-visible { outline-color: var(--caramel); }
+.prose + .cards, .steps, h2 + .cards { margin-top: 24px; }
+.shot > .slot { aspect-ratio: 21 / 9; }
+.shot-grid .slot { aspect-ratio: 4 / 3; }
+
+/* Botões e link do protótipo */
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 0 0 40px; }
+.btn { font-size: 12px; font-weight: 500; letter-spacing: .4px; text-transform: uppercase; padding: 13px 24px; border-radius: 999px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: transform .2s ease, background .2s ease; }
+.btn:hover { transform: translateY(-2px); }
+.btn-brown { background: var(--brown); color: var(--cream); }
+.btn-brown:hover { background: #7a4434; }
+.proto { margin-top: 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 24px 28px; }
+.proto h3 { margin: 0 0 4px; }
+.proto p { margin: 0; font-size: 14px; color: var(--text-secondary); }
+.btn-caramel { background: var(--caramel); color: #2b140c; }
+.btn-caramel:hover { background: var(--caramel-soft); }
