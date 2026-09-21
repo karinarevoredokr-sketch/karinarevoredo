@@ -1,0 +1,45 @@
+/* Tema de Finanças de mães solo: roxo e magenta das telas do app */
+:root { --plum: #1d1023; --plum-2: #2a1633; --violet: #7b2ff7; --magenta: #d21fb1; --lilac: #e9a8f2; --accent: #d21fb1; --pink: #d21fb1; --pink-soft: #e9a8f2; --border-accent: #d21fb1; }
+
+.hero-band { background: linear-gradient(135deg, #6a1fd6 0%, #b21ec4 55%, #e0288f 100%); color: #fff; position: relative; overflow: hidden; padding-bottom: 72px; border-radius: 0 0 36px 36px; }
+.hero-band::after { content: ""; position: absolute; width: 520px; height: 520px; right: -140px; top: -180px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.22), rgba(255,255,255,0) 70%); pointer-events: none; }
+.hero-band .wrap { position: relative; z-index: 1; }
+.hero-band .logo, .hero-band .back { color: #fff; }
+.hero-band .back:hover { color: #ffd6f4; }
+.hero-band .eyebrow { color: #ffd6f4; }
+.hero-band h1 { color: #fff; font-style: normal; font-size: clamp(40px, 7vw, 76px); letter-spacing: -1px; }
+.hero-band .lead { color: #fbeaff; }
+.hero-band .meta { border-color: rgba(255,255,255,.3); margin-bottom: 8px; }
+.hero-band .meta dt { color: #f3c9ee; }
+.hero-band .meta dd { color: #fff; font-weight: 500; }
+
+.pill { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; letter-spacing: .8px; text-transform: uppercase; color: #fff; border: 1px solid rgba(255,255,255,.55); border-radius: 999px; padding: 6px 14px; margin-bottom: 22px; }
+.pill i { width: 7px; height: 7px; border-radius: 50%; background: #4BF1A2; display: inline-block; }
+
+.eyebrow .dot { background: var(--magenta); }
+.section-label .index { color: var(--magenta); }
+.statement { background: linear-gradient(135deg, #7b2ff7, #d21fb1); color: #fff; border-radius: 28px; padding: clamp(32px, 6vw, 64px); margin: 72px 0 0; }
+.statement p { font-family: var(--font-editorial); font-size: clamp(24px, 3.6vw, 40px); line-height: 1.25; margin: 0; max-width: 26ch; }
+.statement small { display: block; margin-top: 18px; font-size: 12px; letter-spacing: .8px; text-transform: uppercase; opacity: .8; }
+
+.card { border-radius: 20px; }
+.card:hover { border-color: var(--magenta); }
+.card .ico { width: 40px; height: 40px; border-radius: 12px; background: rgba(210, 31, 177, .16); display: grid; place-items: center; margin-bottom: 14px; }
+.card .ico svg { width: 22px; height: 22px; }
+.steps li { border-radius: 20px; }
+.steps li::before { color: var(--magenta); }
+.next { border-radius: 20px; }
+.next:hover { border-color: var(--magenta); }
+.next .arrow { color: var(--magenta); }
+a:focus-visible { outline-color: var(--lilac); }
+
+/* Galeria de telas */
+.gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px 16px; margin-top: 40px; padding: 32px 20px; background: var(--plum); border: 1px solid #43244f; border-radius: 28px; align-items: start; }
+@media (min-width: 900px) { .gallery { grid-template-columns: repeat(4, 1fr); gap: 32px 24px; padding: 48px 32px; } }
+.gallery figure { margin: 0; text-align: center; }
+.gallery .frame { position: relative; height: 400px; max-width: 210px; margin: 0 auto; overflow: hidden; border-radius: 22px; box-shadow: 0 18px 36px rgba(0,0,0,.5); background: #f5f5f5; }
+.gallery .frame::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 90px; background: linear-gradient(to bottom, rgba(29,16,35,0), rgba(29,16,35,.85)); pointer-events: none; }
+.gallery img { display: block; width: calc(100% + 4px); max-width: none; height: auto; margin: -2px 0 0 -2px; }
+.gallery figcaption { margin-top: 14px; }
+.gallery figcaption strong { display: block; color: #fff; font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+.gallery figcaption span { color: var(--lilac); font-size: 12.5px; line-height: 1.5; display: block; max-width: 26ch; margin: 0 auto; }
