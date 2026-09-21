@@ -55,3 +55,10 @@ a:focus-visible { outline-color: var(--caramel); }
 .proto p { margin: 0; font-size: 14px; color: var(--text-secondary); }
 .btn-caramel { background: var(--caramel); color: #2b140c; }
 .btn-caramel:hover { background: var(--caramel-soft); }
+
+/* Galeria de telas do app */
+.gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 16px; margin-top: 40px; padding: 32px 20px; background: #2a1913; border: 1px solid #4a2c20; border-radius: 28px; }
+@media (min-width: 720px) { .gallery { grid-template-columns: repeat(3, 1fr); gap: 36px 24px; padding: 48px 40px; } }
+.gallery figure { margin: 0; text-align: center; align-self: start; }
+.gallery img { width: 100%; max-width: 260px; height: auto; margin: 0 auto; filter: drop-shadow(0 16px 32px rgba(0, 0, 0, .45)); }
+.gallery figcaption { color: var(--caramel-soft); font-size: 13px; margin-top: 14px; }
