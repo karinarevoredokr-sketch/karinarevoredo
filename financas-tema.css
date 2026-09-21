@@ -37,9 +37,9 @@ a:focus-visible { outline-color: var(--lilac); }
 .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px 16px; margin-top: 40px; padding: 32px 20px; background: var(--plum); border: 1px solid #43244f; border-radius: 28px; align-items: start; }
 @media (min-width: 900px) { .gallery { grid-template-columns: repeat(4, 1fr); gap: 32px 24px; padding: 48px 32px; } }
 .gallery figure { margin: 0; text-align: center; }
-.gallery .frame { position: relative; height: 400px; max-width: 210px; margin: 0 auto; overflow: hidden; border-radius: 22px; box-shadow: 0 18px 36px rgba(0,0,0,.5); background: #f5f5f5; }
+.gallery .frame { position: relative; height: 470px; max-width: 250px; margin: 0 auto; overflow: hidden; border-radius: 26px; }
 .gallery .frame::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 90px; background: linear-gradient(to bottom, rgba(29,16,35,0), rgba(29,16,35,.85)); pointer-events: none; }
-.gallery img { display: block; width: calc(100% + 4px); max-width: none; height: auto; margin: -2px 0 0 -2px; }
+.gallery img { display: block; width: 100%; max-width: none; height: auto; filter: drop-shadow(0 14px 26px rgba(0,0,0,.45)); }
 .gallery figcaption { margin-top: 14px; }
 .gallery figcaption strong { display: block; color: #fff; font-size: 14px; font-weight: 500; margin-bottom: 4px; }
 .gallery figcaption span { color: var(--lilac); font-size: 12.5px; line-height: 1.5; display: block; max-width: 26ch; margin: 0 auto; }
