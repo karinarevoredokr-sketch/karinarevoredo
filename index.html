@@ -209,6 +209,26 @@
   }
 
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+  /* ===== Sobre em destaque ===== */
+  .about-grid { display: grid; grid-template-columns: 1fr; gap: 36px; align-items: start; margin-bottom: 20px; }
+  .about-figure { margin: 0; position: relative; }
+  .about-figure img { display: block; width: 100%; max-width: 340px; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 22px; border: 1px solid var(--border-strong); }
+  .about-figure::after { content: ""; position: absolute; inset: 12px auto -12px 12px; width: 100%; max-width: 340px; border: 1px solid var(--border-accent); border-radius: 22px; z-index: -1; }
+  .about-title { font-family: var(--font-editorial); font-style: italic; font-weight: 400; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.2; color: var(--text-primary); margin: 0 0 14px; }
+  .about-lead { font-size: 16.5px; color: var(--text-primary); max-width: 52ch; }
+  .about-body p { max-width: 60ch; margin: 0 0 14px; }
+  .about-facts { display: grid; grid-template-columns: 1fr; gap: 16px; margin: 26px 0; padding: 20px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .about-facts dt { font-size: 10px; letter-spacing: .8px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+  .about-facts dd { margin: 0; font-size: 14px; color: var(--text-primary); }
+  .about-label { font-size: 10px; letter-spacing: .8px; text-transform: uppercase; color: var(--text-muted); margin: 0 0 10px !important; }
+  .chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 24px; padding: 0; }
+  .chips li { font-size: 12.5px; color: var(--text-body); border: 1px solid var(--border-strong); border-radius: 999px; padding: 6px 14px; }
+  .about-cta { margin-top: 6px; }
+  @media (min-width: 720px) { .about-facts { grid-template-columns: repeat(2, 1fr); gap: 28px; } }
+  @media (min-width: 900px) {
+    .about-grid { grid-template-columns: 340px 1fr; gap: 56px; align-items: center; }
+  }
 </style>
 </head>
 <body>
@@ -335,12 +355,30 @@
         <span class="rule"></span>
         <span class="name">Sobre</span>
       </div>
-      <div class="about-content">
-        <div class="about-text">
-          <p>Antropóloga de formação, hoje UX researcher. Trabalho na ponte entre comportamento humano e decisões de produto, principalmente em contextos de saúde.</p>
-          <p>Fiz graduação em Antropologia e, mais recentemente, pós-graduação em UX Design pela PUC. Hoje atuo com pesquisa e jornada de usuário em projetos de saúde, e também faço trabalhos autorais de discovery e pesquisa fora do meu emprego principal.</p>
-          <p>Fora do trabalho, gosto de conversar sobre o que faz as pessoas realmente decidirem as coisas, e é basicamente esse fio que puxo em toda pesquisa que faço.</p>
-        </div>
+
+      <div class="about-grid">
+        <figure class="about-figure">
+          <img src="karina-sobre.webp" width="900" height="1125" alt="Retrato de Karina Revoredo com um leve sorriso, óculos de armação tartaruga e cabelo cacheado curto" loading="lazy">
+        </figure>
+
+        <div class="about-body">
+          <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Karina Revoredo</p>
+          <h2 class="about-title">Escuto primeiro, desenho depois</h2>
+          <p class="about-lead">Sou antropóloga e trabalho como UX researcher em projetos de saúde. Meu trabalho é entender como as pessoas vivem e decidem, para que o produto caiba na vida delas.</p>
+          <p>Comecei na antropologia, onde aprendi a observar com paciência, e levei esse olhar para o UX com a pós-graduação pela PUC. Fora do meu emprego principal, faço estudos autorais de discovery, como o de finanças para mães solo.</p>
+
+          <ul class="chips">
+            <li>Entrevistas</li>
+            <li>Pesquisa de campo</li>
+            <li>Testes de usabilidade</li>
+            <li>Card sorting</li>
+            <li>Síntese de insights</li>
+          </ul>
+
+          <div class="btn-row about-cta">
+            <a href="mailto:karinarevoredo.kr@gmail.com" class="btn btn-primary">Vamos conversar</a>
+            <a href="https://www.linkedin.com/in/karina-revoredo/" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn</a>
+          </div>
       </div>
     </section>
   </div>
