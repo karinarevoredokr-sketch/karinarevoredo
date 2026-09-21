@@ -112,9 +112,9 @@
       <p>Foi um projeto que me fez admirar ainda mais o trabalho das ONGs de adoção. Se eu fizesse de novo, visitaria mais ONGs desde o começo, para entender o contexto geral e as principais dores de quem cuida dos animais, e não só de uma realidade.</p>
     </div>
 
-    <a href="case-study-financas-maes-solo.html" class="next">
-      <div><span class="k">Próximo estudo</span><span class="t">Finanças de mães solo</span></div>
-      <span class="arrow">Ver estudo →</span>
+    <a href="index.html#projetos" class="next next-home">
+      <div><span class="k">Quer ver mais?</span><span class="t">Voltar para a página inicial</span></div>
+      <span class="arrow">← Ver todos os projetos</span>
     </a>
   </main>
 
@@ -126,5 +126,15 @@
     </div>
   </footer>
 </div>
+<a href="index.html#projetos" class="float-home" aria-label="Voltar para a página inicial, seção de projetos">← Projetos</a>
+<script>
+(function () {
+  var b = document.querySelector('.float-home');
+  if (!b) return;
+  function upd() { var nearEnd = window.scrollY + window.innerHeight > document.documentElement.scrollHeight - 420; b.classList.toggle('is-hidden', window.scrollY < 320 || nearEnd); }
+  upd();
+  window.addEventListener('scroll', upd, { passive: true });
+})();
+</script>
 </body>
 </html>
