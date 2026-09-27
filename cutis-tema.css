@@ -29,16 +29,23 @@
 .next .arrow { color: var(--teal); }
 a:focus-visible { outline-color: var(--teal-soft); }
 
-/* Cartões compactos de etapa: ícone + rótulo curto, sem parágrafo */
+/* Cartões de etapa clicáveis: ícone + rótulo, abrem detalhes no painel abaixo */
 .cards.mini { grid-template-columns: repeat(2, 1fr); }
 @media (min-width: 640px) { .cards.mini { grid-template-columns: repeat(5, 1fr); } }
-.cards.mini .card { padding: 18px 14px; text-align: center; }
+.cards.mini .card { padding: 18px 14px; text-align: center; cursor: pointer; font: inherit; color: inherit; width: 100%; }
 .cards.mini .card .ico { margin: 0 auto 10px; }
 .cards.mini .card h3 { font-size: 13px; margin: 0; }
+.cards.mini .card[aria-pressed="true"] { border-color: var(--teal); background: rgba(23, 195, 160, .08); }
+.cards.mini .card[aria-pressed="true"] .ico { background: rgba(23, 195, 160, .28); }
 
-/* Linha curta sobre o uso de IA no processo, sem virar parágrafo separado */
-.note { border-left: 2px solid var(--teal); padding: 2px 0 2px 16px; margin-top: 22px; }
-.note p { margin: 0; font-size: 13.5px; color: var(--text-secondary); max-width: 60ch; }
+/* Painel de detalhes: abre abaixo da grade, sem sobrepor nada */
+.step-details { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px 26px; margin-top: 18px; }
+.step-details h3 { font-family: var(--font-editorial); font-weight: 400; font-size: 19px; margin: 0 0 4px; color: var(--text-primary); }
+.step-details dl { display: grid; gap: 14px; margin: 16px 0 0; }
+.step-details .row { display: grid; gap: 3px; }
+.step-details dt { font-size: 10px; letter-spacing: .6px; text-transform: uppercase; color: var(--text-muted); }
+.step-details dd { margin: 0; font-size: 14px; color: var(--text-body); line-height: 1.6; }
+.step-hint { font-size: 13px; color: var(--text-muted); margin-top: 18px; }
 
 /* Números em destaque, cada um aparece uma única vez na página */
 .stats { display: grid; gap: 14px; grid-template-columns: repeat(2, 1fr); }
