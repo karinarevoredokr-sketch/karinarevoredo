@@ -39,12 +39,20 @@ a:focus-visible { outline-color: var(--teal-soft); }
 .cards.mini .card[aria-pressed="true"] .ico { background: rgba(23, 195, 160, .28); }
 
 /* Painel de detalhes: abre abaixo da grade, sem sobrepor nada */
-.step-details { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px 26px; margin-top: 18px; }
-.step-details h3 { font-family: var(--font-editorial); font-weight: 400; font-size: 19px; margin: 0 0 4px; color: var(--text-primary); }
-.step-details dl { display: grid; gap: 14px; margin: 16px 0 0; }
-.step-details .row { display: grid; gap: 3px; }
-.step-details dt { font-size: 10px; letter-spacing: .6px; text-transform: uppercase; color: var(--text-muted); }
-.step-details dd { margin: 0; font-size: 14px; color: var(--text-body); line-height: 1.6; }
+.step-details { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 26px 28px; margin-top: 18px; }
+.step-details h3 { font-family: var(--font-editorial); font-weight: 400; font-size: 19px; margin: 0 0 18px; color: var(--text-primary); }
+.step-details dl { margin: 0; padding: 0; }
+.step-details dt { margin: 0; }
+.step-details dd { margin: 0; }
+
+.step-meta { display: grid; grid-template-columns: 1fr; gap: 14px; padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
+@media (min-width: 560px) { .step-meta { grid-template-columns: 1fr 1fr; gap: 28px; } }
+.step-meta dt { font-size: 10px; letter-spacing: .6px; text-transform: uppercase; color: var(--teal-soft); margin-bottom: 6px; }
+.step-meta dd { font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; }
+
+.step-resultado dt { font-size: 10px; letter-spacing: .6px; text-transform: uppercase; color: var(--teal-soft); margin-bottom: 8px; }
+.step-resultado dd { font-size: 15px; color: var(--text-primary); line-height: 1.75; max-width: 62ch; }
+
 .step-hint { font-size: 13px; color: var(--text-muted); margin-top: 18px; }
 
 /* Números em destaque, cada um aparece uma única vez na página */
