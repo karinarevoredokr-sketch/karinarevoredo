@@ -50,31 +50,37 @@
       <p>Conduzi sozinha todo o processo desde a entrada no projeto, validando cada etapa com a médica especialista e com os stakeholders ao longo do caminho, não só no fim.</p>
     </div>
 
-    <div class="cards mini">
-      <div class="card">
+    <div class="cards mini" id="stepCards" role="group" aria-label="Etapas do processo, clique para ver os detalhes">
+      <button type="button" class="card" data-step="pesquisa" aria-pressed="false">
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#17c3a0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="M20 20l-5.5-5.5"/></svg></span>
         <h3>Pesquisa</h3>
-      </div>
-      <div class="card">
+      </button>
+      <button type="button" class="card" data-step="wireframes" aria-pressed="false">
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#17c3a0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></span>
         <h3>Wireframes</h3>
-      </div>
-      <div class="card">
+      </button>
+      <button type="button" class="card" data-step="prototipo" aria-pressed="false">
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#17c3a0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4"/></svg></span>
         <h3>Protótipo navegável</h3>
-      </div>
-      <div class="card">
+      </button>
+      <button type="button" class="card" data-step="designsystem" aria-pressed="false">
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#17c3a0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5Z"/><path d="M3 13l9 5 9-5"/></svg></span>
         <h3>Design system</h3>
-      </div>
-      <div class="card">
+      </button>
+      <button type="button" class="card" data-step="implantacao" aria-pressed="false">
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#17c3a0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 3h6v3H9zM8 11h8M8 15h5"/></svg></span>
         <h3>Pesquisa de implantação</h3>
-      </div>
+      </button>
     </div>
 
-    <div class="note">
-      <p>Usei IA em pontos específicos do processo: para organizar e comparar dados de pesquisa, e para gerar variações de tela em testes rápidos de usabilidade, sem substituir a pesquisa com usuários reais nem expor dados sensíveis.</p>
+    <p class="step-hint" id="stepHint">Clique em uma etapa acima para ver objetivo, método e resultado.</p>
+    <div class="step-details" id="stepDetails" hidden>
+      <h3 id="stepTitle"></h3>
+      <dl>
+        <div class="row"><dt>Objetivo</dt><dd id="stepObjetivo"></dd></div>
+        <div class="row"><dt>Método</dt><dd id="stepMetodo"></dd></div>
+        <div class="row" id="stepResultadoRow"><dt>Resultado</dt><dd id="stepResultado"></dd></div>
+      </dl>
     </div>
 
     <div class="section-label"><span class="index">03</span><span class="rule"></span><span class="name">Resultados em números</span></div>
@@ -111,6 +117,89 @@
   function upd() { var nearEnd = window.scrollY + window.innerHeight > document.documentElement.scrollHeight - 420; b.classList.toggle('is-hidden', window.scrollY < 320 || nearEnd); }
   upd();
   window.addEventListener('scroll', upd, { passive: true });
+})();
+</script>
+<script>
+(function () {
+  var steps = {
+    pesquisa: {
+      title: 'Pesquisa',
+      objetivo: 'Entender o problema antes de desenhar qualquer tela.',
+      metodo: 'Discovery com a equipe clínica.',
+      resultado: 'Identifiquei a necessidade de o app funcionar online e offline, de avisar antes de fazer logout para dar chance de reconexão, e de usar linguagem simples para um público com formação heterogênea. Essas descobertas definiram o que os wireframes precisavam resolver.'
+    },
+    wireframes: {
+      title: 'Wireframes',
+      objetivo: 'Estruturar o fluxo antes de qualquer decisão visual.',
+      metodo: 'Três níveis de fidelidade, baixa, média e alta, para validar o fluxo antes de avançar.',
+      resultado: null
+    },
+    prototipo: {
+      title: 'Protótipo navegável',
+      objetivo: 'Validar o fluxo completo antes de seguir para o desenvolvimento.',
+      metodo: 'Protótipo feito no Figma, testado com a médica especialista, com público não especializado e com pessoas-chave da área da saúde. Usei IA para gerar variações de tela em testes rápidos de usabilidade.',
+      resultado: 'Os testes mostraram que várias telas se repetiam entre os modos online e offline, o que apontou a necessidade de um design system.'
+    },
+    designsystem: {
+      title: 'Design system',
+      objetivo: 'Dar consistência ao produto e eliminar retrabalho entre telas repetidas.',
+      metodo: 'Componentização das telas que se repetiam nos modos online e offline.',
+      resultado: 'Acelerou o desenvolvimento: tudo ficou componentizado e mapeado para os desenvolvedores seguirem.'
+    },
+    implantacao: {
+      title: 'Pesquisa de implantação',
+      objetivo: 'Entender a adoção do app em campo e identificar gargalos de usabilidade.',
+      metodo: 'Monitorias presenciais em múltiplos centros, com formulários estruturados.',
+      resultado: 'As monitorias estão em fase de conclusão. O próximo passo é analisar os dados coletados para identificar pontos críticos.'
+    }
+  };
+
+  var cards = document.querySelectorAll('#stepCards .card');
+  var hint = document.getElementById('stepHint');
+  var panel = document.getElementById('stepDetails');
+  var title = document.getElementById('stepTitle');
+  var objetivo = document.getElementById('stepObjetivo');
+  var metodo = document.getElementById('stepMetodo');
+  var resultadoRow = document.getElementById('stepResultadoRow');
+  var resultado = document.getElementById('stepResultado');
+  var active = null;
+
+  function open(step, card) {
+    var data = steps[step];
+    if (!data) return;
+    title.textContent = data.title;
+    objetivo.textContent = data.objetivo;
+    metodo.textContent = data.metodo;
+    if (data.resultado) {
+      resultadoRow.hidden = false;
+      resultado.textContent = data.resultado;
+    } else {
+      resultadoRow.hidden = true;
+    }
+    hint.hidden = true;
+    panel.hidden = false;
+  }
+
+  function close() {
+    panel.hidden = true;
+    hint.hidden = false;
+  }
+
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      var step = card.getAttribute('data-step');
+      if (active === card) {
+        card.setAttribute('aria-pressed', 'false');
+        active = null;
+        close();
+        return;
+      }
+      if (active) active.setAttribute('aria-pressed', 'false');
+      card.setAttribute('aria-pressed', 'true');
+      active = card;
+      open(step, card);
+    });
+  });
 })();
 </script>
 </body>
