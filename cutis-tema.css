@@ -1,0 +1,48 @@
+/* Tema do CUTIScan: teal e azul, remetendo a saúde e tecnologia clínica */
+:root { --navy: #0a2229; --navy-2: #0f333b; --teal: #17c3a0; --teal-soft: #8fe6cf; --blue: #2f8fd1; --accent: #17c3a0; --pink: #17c3a0; --pink-soft: #8fe6cf; --border-accent: #17c3a0; }
+
+.hero-band { background: linear-gradient(135deg, #0a2229 0%, #0f5c63 55%, #128a6f 100%); color: #fff; position: relative; overflow: hidden; padding-bottom: 72px; border-radius: 0 0 36px 36px; }
+.hero-band::after { content: ""; position: absolute; width: 520px; height: 520px; right: -140px; top: -180px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.16), rgba(255,255,255,0) 70%); pointer-events: none; }
+.hero-band .wrap { position: relative; z-index: 1; }
+.hero-band .logo, .hero-band .back { color: #fff; }
+.hero-band .back:hover { color: var(--teal-soft); }
+.hero-band .eyebrow { color: var(--teal-soft); }
+.hero-band .lead { color: #e4f7f1; }
+.hero-band .meta { border-color: rgba(255,255,255,.3); margin-bottom: 8px; }
+.hero-band .meta dt { color: #bdeee0; }
+.hero-band .meta dd { color: #fff; font-weight: 500; }
+
+.pill { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; letter-spacing: .8px; text-transform: uppercase; color: #fff; border: 1px solid rgba(255,255,255,.55); border-radius: 999px; padding: 6px 14px; margin-bottom: 22px; }
+.pill i { width: 7px; height: 7px; border-radius: 50%; background: #4BF1A2; display: inline-block; }
+
+.eyebrow .dot { background: var(--teal); }
+.section-label .index { color: var(--teal); }
+.statement { background: linear-gradient(135deg, #0f5c63, #128a6f); color: #fff; border-radius: 28px; padding: clamp(32px, 6vw, 64px); margin: 72px 0 0; }
+.statement p { font-family: var(--font-editorial); font-size: clamp(24px, 3.6vw, 40px); line-height: 1.25; margin: 0; max-width: 30ch; }
+.statement small { display: block; margin-top: 18px; font-size: 12px; letter-spacing: .8px; text-transform: uppercase; opacity: .8; }
+
+.card:hover { border-color: var(--teal); }
+.card .ico { width: 40px; height: 40px; border-radius: 12px; background: rgba(23, 195, 160, .14); display: grid; place-items: center; margin-bottom: 14px; }
+.card .ico svg { width: 22px; height: 22px; }
+.next { border-radius: 20px; }
+.next:hover { border-color: var(--teal); }
+.next .arrow { color: var(--teal); }
+a:focus-visible { outline-color: var(--teal-soft); }
+
+/* Cartões compactos de etapa: ícone + rótulo curto, sem parágrafo */
+.cards.mini { grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 640px) { .cards.mini { grid-template-columns: repeat(5, 1fr); } }
+.cards.mini .card { padding: 18px 14px; text-align: center; }
+.cards.mini .card .ico { margin: 0 auto 10px; }
+.cards.mini .card h3 { font-size: 13px; margin: 0; }
+
+/* Linha curta sobre o uso de IA no processo, sem virar parágrafo separado */
+.note { border-left: 2px solid var(--teal); padding: 2px 0 2px 16px; margin-top: 22px; }
+.note p { margin: 0; font-size: 13.5px; color: var(--text-secondary); max-width: 60ch; }
+
+/* Números em destaque, cada um aparece uma única vez na página */
+.stats { display: grid; gap: 14px; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 640px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+.stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px 16px; text-align: center; }
+.stat .num { display: block; font-family: var(--font-editorial); font-size: clamp(26px, 4vw, 34px); color: var(--text-primary); line-height: 1; }
+.stat .label { display: block; margin-top: 8px; font-size: 11px; letter-spacing: .5px; text-transform: uppercase; color: var(--text-muted); }
